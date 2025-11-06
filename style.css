@@ -20,7 +20,10 @@ button{
 }
 
 img{
-    margin-top: 20px;
-    width: 200px;
-    
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    border-radius:20px;
+    transition: transform 0.3s ease;
+    cursor: pointer;
 }
