@@ -63,6 +63,13 @@ function showNextImage(){
     img.draggable=false; //stop browser drag
     preloadNextImg();
 
+    // overlay and text to hint direction
+    const overlay = document.createElement("div");
+    overlay.classList.add("swipe overlay");
+    imageContainer.innerHTML="";
+    imageContainer.appendChild(img);
+    imageContainer.appendChild(overlay)
+
     // swiping mechanism
     let startX = 0;
     img.addEventListener("mousedown", (e) => {
