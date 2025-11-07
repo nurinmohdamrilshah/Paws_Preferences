@@ -20,7 +20,7 @@ startBtn.addEventListener("click",function(){
     if (started) { //Start swiping
         // Instruction message
         message.textContent = "Swipe right if you like a kitty and left if not really! :)"
-        startBtn.textContent = "Reset";
+        startBtn.textContent = "RESET";
         startBtn.classList.add("reset");
         currentIndex = 0;
 
@@ -30,7 +30,7 @@ startBtn.addEventListener("click",function(){
     }
     else{
         message.textContent = ""
-        startBtn.textContent = "Start";
+        startBtn.textContent = "START";
         startBtn.classList.remove("reset");
         //remove image when reset
         imageContainer.innerHTML = "";
@@ -42,17 +42,22 @@ function showNextImage(){
 
     // check if reach limit
     if (currentIndex >= totalImages){
-        message.textContent = "You've seen all the kitties! Here are your favs <3"
         
         //reset layout
         imageContainer.classList.add("favourites");
         imageContainer.innerHTML = "";
 
         // display fav images
-        for (const src in favImages){
-            const img = document.createElement("img");
-            img.src = src;
-            imageContainer.appendChild(img);
+        const favKeys = Object.keys(favImages);
+        if (favKeys.length === 0){
+            message.textContent = "You've seen all the kitties! But none of them tickle your fancy (yet!)"
+        }else{
+            message.textContent = "You've seen all the kitties! Here are your favs <3"
+            favKeys.forEach(src => {
+                const img = document.createElement("img");
+                img.src = src;
+                imageContainer.appendChild(img);
+            });
         }
         return;
         
@@ -210,9 +215,6 @@ function preloadNextImg(){
     preloadImg.src = newSrc;
     nextImageSrc = newSrc;
 }
-
-
-/////////////////////////////////
 
 
 
