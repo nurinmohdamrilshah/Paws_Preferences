@@ -85,7 +85,7 @@ function showNextImage(){
         if (!isDragging) return;
 
         const diffX = e.clientX - startX;
-        if (Math.abs(diffX<15)) return;
+        if (Math.abs(diffX)<15) return;
 
         const rotation = diffX/20;
         img.style.transform = `translateX(${diffX}px) rotate(${rotation}deg)`;
