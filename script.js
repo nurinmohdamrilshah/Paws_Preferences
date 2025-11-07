@@ -88,7 +88,7 @@ function showNextImage(){
         if (Math.abs(diffX<15)) return;
 
         const rotation = diffX/20;
-        img.style.transform = 'translateX(${diffX}px) rotate(${rotation}deg)';
+        img.style.transform = `translateX(${diffX}px) rotate(${rotation}deg)`;
 
         if (diffX > 0){
             overlay.textContent = "❤️";
@@ -132,7 +132,7 @@ function showNextImage(){
         if (Math.abs(diffX)<15) return;
 
         const rotation = diffX/20;
-        img.style.transform = 'translateX(${diffX}px) rotate(${rotation}deg)';
+        img.style.transform = `translateX(${diffX}px) rotate(${rotation}deg)`;
         if (diffX > 0){
             overlay.textContent = "❤️";
             img.style.boxShadow = "0 0 30px 5px rgba(0,255,0,0.5)";
