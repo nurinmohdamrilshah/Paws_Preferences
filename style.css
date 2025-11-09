@@ -1,96 +1,126 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
 body{
-    font-family: 'Poppins', sans-serif;
+    font-family:  'Press Start 2P', cursive;
     text-align: center;
-    background-color: #fff7ec;
-    color: #4a3f35;
     margin: 0;
-    padding: 20px;
+    padding: 50px 10px;
+    background-color:#FFF4E6;
+    background-image: repeating-linear-gradient(
+        45deg,
+        #fff4e6,
+        #fff4e6 20px,
+        #ffebd6 20px,
+        #ffebd6 40px,
+    );
+    color:#333;
+}
+#app{
+    max-width:400px;
+    margin:auto;
+    padding:30px;
+    background: #FFF0e6;
+    border-radius:30px;
+    box-shadow:0 10px 25px rgba(0,0,0,0,0.2);
     display:flex;
     flex-direction: column;
     align-items: center;
-    min-height: 100vh;
+    background-image: repeating-linear-gradient(
+        45deg,
+        #fff0e6,
+        #fff0e6 20px,
+        #ffebd6 20px,
+        #ffebd6 40px,
+    );
 }
 
-header h1{ /*responsive to screenwidth*/
-    font-weight:600;
-    font-size: clamp(1.3rem, 7vw,3.8rem);
-    white-space: nowrap;
-    overflow: hidden;
-    color:#3c2f2f;
-    letter-spacing:1px;
-    text-shadow: 2px 3px 0px rgba(0,0,0,0),
-    0px 0px 4px, rgba(255,240,200,0.6);
-    background: linear-gradient(90deg,#ffcc8f,#ffe7c2);
-    padding: 10px 0;
-    margin: 1rem 0 0.5rem 0;
-}
+h1{
+    font-family: 'Press Start 2P', cursive;
+    font-size: 1.5rem;
+    color: #ff6b81;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px #ffebd6;
 
+}
 #message{
+    font-family: 'Press Start 2P', cursive;
     font-size: 1rem;
-    margin-bottom: 1rem;
-    color: #6a5648;
-    min-height:1.5em;
+    display: block;
+    padding: 8px 15px;
+    border-radius: 20px;
+    background: linear-gradient(135deg,#FFF0e6,#ffebd6);
+    color: #ff6b81;
+    font-weight:400;
+    margin:10px 0 20px 0;
+    transition: all 0.3s ease;
 }
 
-#startBtn{
-    font-family: 'Poppins', sans-serif;
-    font-size: 1.1rem;
-    font-weight:600;
+#counter {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 10px;
+    color: #FF6B81;
+    margin: 5px 0 15px 0;
+    padding:12px;
+    background: linear-gradient(135deg, #fff0e6,#ffebd6);
+    border: 3px solid #ffb7c5;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px 10px rgba(0,0,0,0.2);
+    display: none;
+    letter-spacing: 1px;
+    text-shadow: 1px 1px #fff, 2px 2px #ffd1dc;
+}
+
+button{
+    font-family: 'Press Start 2P', cursive;
+    padding: 12px 36px;
+    font-size: 16px;
     cursor: pointer;
-    background-color:#ffcc8f;
-    color:  #4a3f35;
+    background: linear-gradient(135deg,#ffd1dc,#ffc6a8);
     border:none;
-    border-radius:12px;
-    box-shadow: 0px 4px 0px #e5a96c;
-    padding: 10px 25px;
+    border-radius:30px;
+    box-shadow: 0 6px 12px rgba(0,0,0,0,0.2);
     transition: all 0.2s ease;
 }
-#startBtn:hover{
-    transform: translateY(-2px);
-    box-shadow: 0px, 6px,0px,#e5a96c;
+button:hover{
+    transform: scale(1.1);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
 }
-#startBTn:active{
-    transform:translateY(2px);
-    box-shadow:0px 2px 0px #e5a96c;
+.reset{
+    padding:10px 30px;
+    font-size:12px;
+    background:linear-gradient(135deg,#ffd6a5,#ffb7c5);
+    border-radius:30px;
 }
-#startBtn.reset{
-    background-color: #ffc8c8;
-    box-shadow: 0px 4px 0px #e09e9e;
+.reset:hover{
+    box-shadow: 0 0 15px rgba(255,183,197,0.6);
+    transform: scale(1.1);
 }
 
 #imageContainer{
     position:relative;
-    width: min(90vw, 350px);
-    height: 400px;
-    overflow: hidden;
-    border-radius:20px;
-    box-shadow:0px, 6px,20px, rgba(0,0,0,0.25);
-    margin-top: 30px;
+    margin-top: 20px;
     display: flex;
     justify-content: center;
-    align-items:center;
-    background-color: #fffaf3;
-    margin-bottom: 1.5rem;
-    transition: all 0.3s ease;
+    align-items: center;
+    min-height: 320px;
+    width:100%;
 }
 #imageContainer.favourites{
-    flex-wrap: wrap;
-    overflow-y: auto;
-    background-color: #fff3e1;
     display:grid;
-    grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
-    gap: 20px;
-    padding: 10px;
+    grid-template-columns: repeat(auto-fit,minmax(140px,1fr));
+    gap: 15px;
+    padding: 20px 0;
     justify-items: center;
-    height:auto;
-    min-height: 300px;
-    justify-content: center;
 }
 #imageContainer.favourites img{
-    width:45%;
-    margin: 5px;
-    border-radius: 15px;
-    transition: transform 0.2s ease;
+    width:140px;
+    height:140px;
+    object-fit:cover;
+    border-radius:24px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    animation: fadeIn 0.5s ease forwards;
+    opacity:0;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 #imageContainer.favourites img:hover{
     transform: scale(1.1);
@@ -99,40 +129,37 @@ header h1{ /*responsive to screenwidth*/
     to{opacity:1;}
 }
 
-#image-Container img{
-    width: 100%;
-    height: 100%;
+img{
+    width: 280px;
+    height: 280px;
     object-fit: cover;
-    border-radius:20px;
-    transition: transform 0.3s ease box-shadow 0.3s ease;
-    user-select: none;
+    border-radius:24px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2 ease;
 }
 .swipe-right{
-    animation: swipeLeft 0.3s ease forwards;
-}
-@keyframes swipeRight{
-    to{
-        transform: translate(400px) rotate(20deg);
-        opacity:0;
-    } 
+    transform: translateX(80px) rotate(5deg);
+    opacity:0;
 }
 .swipe-left{
-    animation: swipeLeft 0.3s ease forwards;
-}
-@keyframes swipeLeft{
-    to{
-        transform: translate(-400px) rotate(-20deg);
-        opacity:0;
-    } 
+    transform: translateX(-80px) rotate(-5deg);
+    opacity:0;
 }
 .swipe-overlay{
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 3rem;
+    transform: translate(-50%, -50%) scale(1);
+    font-size: 70px;
     font-weight: bold;
     opacity:0;
-    transition: opacity 0.2s ease, transform 0.2s ease;
+    text-shadow: 2px 2px #fff;
+    transition: all 0.2s ease;
     pointer-events: none;
+}
+
+@keyframes fadeIn{
+    to{opacity:1;}
 }
