@@ -1,21 +1,23 @@
-
-
 const startBtn = document.getElementById("startBtn")
 const message = document.getElementById("message");
 const imageContainer = document.getElementById("imageContainer")
 const baseURL = "https://cataas.com/cat" //random image
+const app = document.getElementById("app");
 const favImages = {};
 
 let started = false
 let currentIndex = 0;
-let totalImages = 5; // change to 20
+let totalImages = 20; // change to 20
 let nextImageSrc = null;
 
 // preload first cat
 window.addEventListener("load", preloadNextImg);
+//start button at top when loaded
+window.addEventListener("load",app.insertBefore(startBtn, imageContainer));
 
 
 startBtn.addEventListener("click",function(){
+    const counter = document.getElementById("counter");
     started = !started
     if (started) { //Start swiping
         // Instruction message
@@ -26,6 +28,13 @@ startBtn.addEventListener("click",function(){
 
         //reset favourites
         Object.keys(favImages).forEach(key => delete favImages[key]);
+
+        // show counter
+        counter.style.display = "inline-block";
+        //move reset button to under image
+        const app = document.getElementById("app");
+        app.appendChild(startBtn);
+
         showNextImage();
     }
     else{
@@ -34,14 +43,21 @@ startBtn.addEventListener("click",function(){
         startBtn.classList.remove("reset");
         //remove image when reset
         imageContainer.innerHTML = "";
+        // hide counter
+        counter.style.display = "none";
+
+        //start button back at top after reset
+        app.insertBefore(startBtn, imageContainer);
     }
 });
 
 function showNextImage(){
+    const counter = document.getElementById("counter");
     imageContainer.innerHTML="";
 
     // check if reach limit
     if (currentIndex >= totalImages){
+        counter.style.display = "none";
         
         //reset layout
         imageContainer.classList.add("favourites");
@@ -59,9 +75,13 @@ function showNextImage(){
                 imageContainer.appendChild(img);
             });
         }
+        //clear counter
+        document.getElementById("counter").textContent = "";
         return;
         
     }
+
+    counter.textContent = `Kitty ${currentIndex + 1} / ${totalImages}`;
 
     // display new random cat and preload the next cat
     const currentSrc = nextImageSrc || `${baseURL}?random=${Date.now()}&nocache=${Math.random()}`;
@@ -161,8 +181,6 @@ function showNextImage(){
         overlay.style.opacity = 0;
         checkSwipe(diffX,img,overlay);
     });
-
-    currentIndex++;
 }
 
 function checkSwipe(diffX,img,overlay){ //check direction and show visual feedback
@@ -183,6 +201,7 @@ function handleSwipe(direction, imageSrc){ // add to fav if swiped right
     setTimeout(()=>{
         if (direction == "right")
             favImages[img.src] = true;
+        currentIndex++;
         showNextImage();
     }, 300);
 }
@@ -215,8 +234,3 @@ function preloadNextImg(){
     preloadImg.src = newSrc;
     nextImageSrc = newSrc;
 }
-
-
-
-
-
